@@ -1,23 +1,10 @@
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:navigasi_dart/halaman2.dart';
 import 'package:navigasi_dart/halaman3.dart';
+import 'package:navigasi_dart/main.dart';
 
-void main() {
-  runApp(const MaterialApp(home: MyApp(),
-  ));
-}
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyWidged extends StatelessWidget {
+  const MyWidged({Key? key}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  var judul = "belajar state";
-  var body = "belajar body";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,12 +26,12 @@ class _MyAppState extends State<MyApp> {
               child: Text(''),
             ),
             ListTile(
-              title: const Text('Halaman 2'),
+              title: const Text('Home'),
               onTap: () {
 
                 Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const MyWidged(),)
+                      builder: (context) => const MyApp(),)
                 );
               },
             ),
@@ -61,21 +48,18 @@ class _MyAppState extends State<MyApp> {
           ],
         ),
       ),
-      appBar: AppBar(
-          centerTitle: true, // centering appbar
-          title: Text(judul)),
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        setState(() {
-          judul = "judul berubah";
-          body = "body yang sudah berubah";
-        });
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(
-        //     builder: (context) => const MyWidged(),
-        //   ),
-        // );
-      }),
-      body: Text(body),
-      );
+      appBar:
+    AppBar(
+      centerTitle: true, // centering appbar
+      title: const Text("halaman2"),
+      toolbarHeight: 50,
+    ),
+      body: ElevatedButton(
+        child: const Text("back"),
+        onPressed: (){
+          Navigator.pop(context);
+        },
+      ),
+    );
   }
 }
